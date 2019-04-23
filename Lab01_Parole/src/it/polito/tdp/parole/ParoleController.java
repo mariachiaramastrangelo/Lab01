@@ -1,20 +1,15 @@
 package it.polito.tdp.parole;
 
-/**
- * Sample Skeleton for 'Parole.fxml' Controller Class
- */
-
-
-import it.polito.tdp.parole.model.Parole;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.parole.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
 
 public class ParoleController {
 	
@@ -40,12 +35,20 @@ public class ParoleController {
 
     @FXML
     void doInsert(ActionEvent event) {
-    	// TODO
+    	elenco.addParola(this.txtParola.getText());
+    	this.txtParola.clear();
+    	this.txtResult.clear();
+    	for (String p: elenco.getElenco()) {
+    		this.txtResult.appendText(p+"\n");
+    	}
     }
+    
+
     
     @FXML
     void doReset(ActionEvent event) {
-    	// TODO
+    	elenco.reset();
+    	this.txtResult.clear();
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
